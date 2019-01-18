@@ -24,7 +24,21 @@ class ViewController: UIViewController {
     }
     
     func updateLbls(data: CMAccelerometerData?,error: Error?)  {
-        guard let accelerometrData = data else {return} 
+        guard let accelerometrData = data else {return}
+        
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits =  1
+        formatter.maximumFractionDigits = 1
+        
+        let x = formatter.string(for: accelerometrData.acceleration.x)
+        let y = formatter.string(for: accelerometrData.acceleration.y)
+        let z = formatter.string(for: accelerometrData.acceleration.z)
+        
+        xLbl.text = "X: \(x!)"
+        yLbl.text = "Y: \(y!)"
+        zLbl.text = "Z: \(z!)"
+        
+        
     }
 
 
